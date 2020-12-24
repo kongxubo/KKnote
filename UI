@@ -1,0 +1,29 @@
+package 简易计算器;
+
+import 计算器.Listener;
+import javax.swing.*;
+import java.awt.*;
+
+public class UI {
+    public static void main(String[] args) {
+        JFrame jFrame = new JFrame("KikiCalculator");
+        Container container = jFrame.getContentPane();
+        JLabel jLabel = new JLabel("0");
+        jLabel.setFont(new Font("微软雅黑",0,30));
+        container.add(jLabel,BorderLayout.NORTH);
+        JPanel jPanel1 = new JPanel();
+        jPanel1.setLayout(new GridLayout(4,4));
+        JButton[] Buttons = new JButton[16];
+        String[] button_name = {"7","8","9","/","4","5","6","*","1","2","3","+","AC","0","-","="};
+        Listener listener = new Listener(jLabel);
+        for(int i=0;i<Buttons.length;i++){
+            Buttons[i] = new JButton(button_name[i]);
+            Buttons[i].addActionListener(listener);
+            jPanel1.add(Buttons[i]);
+        }
+        container.add(jPanel1,BorderLayout.CENTER);
+        jFrame.setBounds(800,170,260,360);
+        jFrame.setVisible(true);
+
+    }
+}
